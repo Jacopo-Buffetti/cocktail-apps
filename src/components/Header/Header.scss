@@ -1,0 +1,29 @@
+@import "src/assets/style/general-style";
+
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img{
+    max-width: 100px;
+  }
+  i{
+    font-size: 20px;
+  }
+}
+.MuiMenu-list {
+  .MuiListItem-button {
+    &:hover {
+      background-color: transparent;
+    }
+    a{
+      color: $colorBlue;
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      &:hover{
+        color: $wisteria;
+      }
+    }
+  }
+}

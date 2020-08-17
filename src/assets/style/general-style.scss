@@ -1,0 +1,27 @@
+@import "color";
+@import "mixins";
+*{
+  outline: none !important;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+img{
+  max-width: 100%;
+  width: 100%;
+}
+
+//FONT
+h1, h2, h3, h4, h5, h6, p, li, span, a {
+  font-family: 'Raleway', sans-serif;
+}
+.button-primary{
+  padding: 10px;
+  background-color: $colorBlue;
+  color: $white;
+  @include box-shadow(1px, 1px, 10px, -1px, rgba($black, 0.5));
+  &:hover{
+    background-color: $wisteria;
+  }
+}

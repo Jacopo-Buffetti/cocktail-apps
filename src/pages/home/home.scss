@@ -1,0 +1,156 @@
+@import "src/assets/style/general-style";
+.main-home {
+  @media (max-width: 500px) {
+    margin: 0 15px;
+  }
+  .slider-home {
+    position: relative;
+    margin: 0 -20px;
+    @media (max-width: 500px) {
+      margin: 0 -20px;
+    }
+    .carousel-initialized {
+      .container-one {
+        background: url("../../assets/image/16-9.jpeg") no-repeat center;
+        background-size: cover;
+        height: 70vh;
+        @media (max-width: 768px) {
+          background-position: right;
+        }
+      }
+
+      .container-two {
+        background: url("../../assets/image/ws_Cocktail_on_the_Rocks_1920x1080 (1).jpg");
+        background-size: cover;
+        height: 70vh;
+        @media (max-width: 768px) {
+          background-position: right;
+        }
+      }
+
+      .container-three {
+        background: url("../../assets/image/cosmopolitan.jpg") no-repeat center;
+        background-size: cover;
+        height: 70vh
+      }
+
+      .carousel-prev, .carousel-next {
+        &:before {
+          background: none;
+          font-family: FontAwesome;
+          color: $white;
+        }
+      }
+
+      .carousel-prev {
+        &:before {
+          padding-left: 0.5em;
+          content: "\f053";
+          font-size: 30px;
+          font-weight: bold;
+        }
+      }
+
+      .carousel-next {
+        &:before {
+          font-size: 40px;
+          padding-right: 0.5em;
+          content: "\f105";
+        }
+      }
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 0;
+      z-index: 10;
+
+      li.carousel-dots-active {
+        button {
+          &:before {
+            color: $colorBlue;
+            opacity: 1;
+          }
+        }
+      }
+
+      li {
+        button {
+          &:before {
+            color: $wisteria;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  h3{
+    text-align: center;
+    font-size: 40px;
+  }
+  .card {
+    @include box-shadow(0, 8px, 16px, 0, rgba($black, 0.5));
+    transition: 0.3s;
+    max-width: 450px;
+    margin: 0 auto;
+    cursor: pointer;
+    .container {
+      padding: 2px 16px;
+      h4{
+        font-size: 30px;
+      }
+    }
+  }
+  .container-form{
+    width: 50%;
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-top: 30px;
+      text-align: center;
+    }
+    input{
+      border: none;
+      border-bottom: 2px solid $font;
+        outline: none;
+      font-size: 16px;
+      color: $font;
+      padding: 10px 10px 5px;
+      &::placeholder{
+        font-size: 16px;
+        color: $font;
+      }
+    }
+    button{
+      appearance: none;
+      border: none;
+      border-bottom: 2px solid $font;
+      background: none;
+      font-size: 16px;
+      padding: 10px 10px 5px 10px;
+      outline: none;
+    }
+    h3{
+      margin-top: 80px;
+    }
+    .card{
+      @media (max-width: 768px) {
+        margin: 30px auto 0;
+
+      }
+    }
+  }
+  .container-card{
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
+  .section-two{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+.main-page{
+  margin: 0 20px;
+}
