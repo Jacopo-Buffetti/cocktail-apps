@@ -5,6 +5,8 @@ import './SearchLetter.scss'
 import get from "lodash/get";
 import { getLetterCocktails } from "../../actions/CocktailDataAction";
 import {connect} from "react-redux";
+import Modal from '@material-ui/core/Modal';
+import DialogLetter from "../../components/DialogLetter/DialogLetter";
 
 const SearchLetter = (props) => {
     const {
@@ -13,13 +15,23 @@ const SearchLetter = (props) => {
     } = props
 
     const [clickValues, setClickValues] = useState('');
+    const [open, setOpen] = React.useState(false);
+
+
+    const handleOpen = (e) => {
+        setOpen(true);
+        setClickValues(e);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const clickValue = (e) =>{
         const data = {
             e,
         };
         handleGetLetterCocktail(data);
-        setClickValues(e);
     }
 
     console.log('mannaggia dio porco',letterCocktail);
@@ -68,9 +80,9 @@ const SearchLetter = (props) => {
                 <div className={`gallery-letter-flex`}>
                     {
                         (letterCocktail) ?(
-                            letterCocktail.map((item, i) => (
-                                <div className="card" key={i.toString()}>
-                                    <img src={item.strDrinkThumb} alt="Avatar" />
+                            letterCocktail.map((item, i) => {
+                                return <div className="card" key={i.toString()} onClick={(e) => handleOpen(item)}>
+                                    <img src={item.strDrinkThumb} alt="Avatar"/>
                                     <div>
                                         <h4><b>{item.strDrink}</b></h4>
                                         <p>Glass: {item.strGlass}</p>
@@ -78,7 +90,7 @@ const SearchLetter = (props) => {
                                     </div>
 
                                 </div>
-                            ))
+                            })
                         ):(
                             <div></div>
                         )
@@ -88,6 +100,14 @@ const SearchLetter = (props) => {
 
                 </div>
             </div>
+            <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={open}
+                onClose={handleClose}
+            >
+                <DialogLetter clickValues={clickValues}></DialogLetter>
+            </Modal>
         </div>
     )
 }
