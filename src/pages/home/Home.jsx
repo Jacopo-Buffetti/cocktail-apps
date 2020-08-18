@@ -27,7 +27,6 @@ const Home = (props) => {
         const data = {
             inputData,
         };
-        console.log(inputData);
         handleSearchCocktail(data);
     };
 
