@@ -12,14 +12,17 @@ const SearchLetter = (props) => {
         letterCocktail
     } = props
 
-    const [clickValues, setClickValue] = useState('');
+    const [clickValues, setClickValues] = useState('');
 
     const clickValue = (e) =>{
         const data = {
             e,
         };
         handleGetLetterCocktail(data);
+        setClickValues(e);
     }
+
+    console.log('mannaggia dio porco',letterCocktail);
 
     useEffect(() => {
         handleGetLetterCocktail();
@@ -62,8 +65,27 @@ const SearchLetter = (props) => {
                         <li><a onClick={(e) => clickValue("Z")}>Z</a></li>
                     </ul>
                 </div>
+                <div className={`gallery-letter-flex`}>
+                    {
+                        (letterCocktail) ?(
+                            letterCocktail.map((item, i) => (
+                                <div className="card" key={i.toString()}>
+                                    <img src={item.strDrinkThumb} alt="Avatar" />
+                                    <div>
+                                        <h4><b>{item.strDrink}</b></h4>
+                                        <p>Glass: {item.strGlass}</p>
+                                        <p>Category: {item.strAlcoholic}</p>
+                                    </div>
+
+                                </div>
+                            ))
+                        ):(
+                            <div></div>
+                        )
+                    }
+                </div>
                 <div className={`container-card-search-letter`}>
-                    <h3>Cocktail {clickValues}</h3>
+
                 </div>
             </div>
         </div>
@@ -71,7 +93,7 @@ const SearchLetter = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    letterCocktail: get(state, 'CoctkailData.data', []),
+    letterCocktail: get(state, 'CoctkailData.datas', []),
 });
 
 const mapDispatchToProps = (dispatch) => ({
