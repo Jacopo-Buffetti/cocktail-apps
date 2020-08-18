@@ -13,10 +13,12 @@ function App() {
         <Switch>
           <Route
                     path="/"
+                    exact
                     component={Home}
           />
           <Route
                     path="/search-letter"
+                    exact
                     component={SearchLetter}
           />
         </Switch>
