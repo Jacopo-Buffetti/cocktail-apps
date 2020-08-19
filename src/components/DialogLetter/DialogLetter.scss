@@ -1,0 +1,30 @@
+.dialog-letter {
+  .container-dialog-letter {
+    h2{
+      text-align: center;
+    }
+    @media (max-width: 450px) {
+      width: 90%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .container-modal-ingredient {
+      display: flex;
+      align-content: center;
+
+      .list-measure {
+        margin-left: 50px;
+      }
+
+      .list-measure, .list-ingredient {
+        padding: 0;
+        list-style: none;
+
+        li {
+
+        }
+      }
+    }
+  }
+}
