@@ -35,6 +35,8 @@ const  Header = () => {
                 </MenuItem>
                 <MenuItem>
                     <Link to={"/search-letter"}>Search Coctkail for  Letter</Link>
+                </MenuItem><MenuItem>
+                    <Link to={"/search-all"}>Search Coctkail for Ingredient</Link>
                 </MenuItem>
                 <MenuItem>
                     <Link to={"/contact"}>Contact</Link>

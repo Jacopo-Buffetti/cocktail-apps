@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 
 const Home = React.lazy(() => import('./pages/home/Home'));
 const SearchLetter = React.lazy(() => import('./pages/searchLetter/SearchLetter'));
+const SearchIngredient = React.lazy(() => import('./pages/searchIngredient/SearchIngredient'));
 const Contact = React.lazy(() => import('./pages/contact/Contact'));
 
 function App() {
@@ -21,10 +22,16 @@ function App() {
                     path="/search-letter"
                     exact
                     component={SearchLetter}
-          /> <Route
+          />
+          <Route
                     path="/contact"
                     exact
                     component={Contact}
+          />
+          <Route
+                    path="/search-all"
+                    exact
+                    component={SearchIngredient}
           />
         </Switch>
           <Footer />
