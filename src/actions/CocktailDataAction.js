@@ -1,5 +1,16 @@
 import { createActions } from 'redux-actions';
-import { SET_RANDOM_COCKTAILS, GET_RANDOM_COCKTAILS, SET_SEARCH_COCKTAILS, GET_SEARCH_COCKTAILS, GET_LETTER_COCKTAILS, SET_LETTER_COCKTAILS, GET_ALL_COCKTAILS, SET_ALL_COCKTAILS } from './types/CocktailDataType';
+import {
+    SET_RANDOM_COCKTAILS,
+    GET_RANDOM_COCKTAILS,
+    SET_SEARCH_COCKTAILS,
+    GET_SEARCH_COCKTAILS,
+    GET_LETTER_COCKTAILS,
+    SET_LETTER_COCKTAILS,
+    GET_ALL_COCKTAILS,
+    SET_ALL_COCKTAILS,
+    SET_ALL_INGREDIENT,
+    GET_ALL_INGREDIENT
+} from './types/CocktailDataType';
 
 export const {
     setRandomCocktails,
@@ -10,6 +21,8 @@ export const {
     getLetterCocktails,
     getAllCocktails,
     setAllrCocktails,
+    getAllIngredient,
+    setAllIngredient
 } = createActions({
     [SET_RANDOM_COCKTAILS]: (payload) => payload,
     [GET_RANDOM_COCKTAILS]: (payload) => payload,
@@ -19,4 +32,6 @@ export const {
     [GET_LETTER_COCKTAILS]: (payload) => payload,
     [SET_ALL_COCKTAILS]: (payload) => payload,
     [GET_ALL_COCKTAILS]: (payload) => payload,
+    [SET_ALL_INGREDIENT]: (payload) => payload,
+    [GET_ALL_INGREDIENT]: (payload) => payload,
 });

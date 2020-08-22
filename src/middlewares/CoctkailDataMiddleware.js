@@ -3,7 +3,9 @@ import get from 'lodash/get';
 import {
     GET_RANDOM_COCKTAILS, SET_RANDOM_COCKTAILS,
     GET_SEARCH_COCKTAILS, SET_SEARCH_COCKTAILS,
-    GET_LETTER_COCKTAILS, SET_LETTER_COCKTAILS, GET_ALL_COCKTAILS, SET_ALL_COCKTAILS
+    GET_LETTER_COCKTAILS, SET_LETTER_COCKTAILS,
+    GET_ALL_COCKTAILS, SET_ALL_COCKTAILS,
+    SET_ALL_INGREDIENT, GET_ALL_INGREDIENT
 } from '../actions/types/CocktailDataType';
 
 const checkCocktailApp = (store) => (next) => (action) => {
@@ -26,7 +28,7 @@ const checkCocktailApp = (store) => (next) => (action) => {
                     store.dispatch({ type: SET_SEARCH_COCKTAILS, payload: get(response, 'data.drinks[0]', []) });
                 });
             break;
-            case GET_LETTER_COCKTAILS:
+        case GET_LETTER_COCKTAILS:
             next(action);
             console.log("avro sbagliato", action.payload);
             const clickValues = get(action, 'payload.e', null);
@@ -100,6 +102,16 @@ const checkCocktailApp = (store) => (next) => (action) => {
             })).catch(errors => {
                 // react on errors.
             })
+            break;
+        case GET_ALL_INGREDIENT:
+            next(action);
+            const clickIngredient = get(action, 'payload.inputData');
+            console.log('Dio merdissima', clickIngredient)
+            axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${clickIngredient}`)
+                .then((response) => {
+                    console.log('response madonna', response);
+                    store.dispatch({ type: SET_ALL_INGREDIENT, payload: get(response, 'data.drinks[0]', []) });
+                });
             break;
         default:
             next(action);

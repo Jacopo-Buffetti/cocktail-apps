@@ -34,8 +34,6 @@ const SearchLetter = (props) => {
         handleGetLetterCocktail(data);
     }
 
-    console.log('mannaggia dio porco',letterCocktail);
-
     useEffect(() => {
         handleGetLetterCocktail();
     }, []);
