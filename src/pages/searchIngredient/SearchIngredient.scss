@@ -1,0 +1,15 @@
+.back-ingredients{
+  background: url("../../assets/image/ingredients.jpg") no-repeat center;
+  background-size: cover;
+  height: 70vh;
+  margin-bottom: 50px;
+}
+.list-ingredients{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  .link-ingredient{
+    width: 25%;
+    margin-bottom: 20px;
+  }
+}

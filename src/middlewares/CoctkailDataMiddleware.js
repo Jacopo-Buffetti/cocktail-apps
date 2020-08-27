@@ -12,10 +12,8 @@ const checkCocktailApp = (store) => (next) => (action) => {
     switch (action.type) {
         case GET_RANDOM_COCKTAILS:
             next(action);
-            console.log(action.payload);
             axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
                 .then((response) => {
-                    console.log(response);
                     store.dispatch({ type: SET_RANDOM_COCKTAILS, payload: get(response, 'data.drinks[0]', []) });
                 });
             break;
@@ -24,18 +22,14 @@ const checkCocktailApp = (store) => (next) => (action) => {
             const inputData = get(action, 'payload.inputData', null);
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputData}`)
                 .then((response) => {
-                    console.log('response 2', response);
                     store.dispatch({ type: SET_SEARCH_COCKTAILS, payload: get(response, 'data.drinks[0]', []) });
                 });
             break;
         case GET_LETTER_COCKTAILS:
             next(action);
-            console.log("avro sbagliato", action.payload);
             const clickValues = get(action, 'payload.e', null);
-            console.log(clickValues)
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${clickValues}`)
                 .then((response) => {
-                    console.log('response 2', response);
                     store.dispatch({ type: SET_LETTER_COCKTAILS, payload: get(response, 'data.drinks', []) });
                 });
             break;
@@ -96,7 +90,6 @@ const checkCocktailApp = (store) => (next) => (action) => {
 
 
             axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive, requestSix, requestSeven, requestEight, requestNine, requestTen, requestEleven, requestTwelve, requestThirteen, requestFourteen, requestFiveteen, requestSixteen, requestSeventeen, requestEighteen, requestNineteen, requestTwenty, requestTwentyOne, requestTwentyTwo, requestTwentyThree, requestTwentyFour, requestTwentyFive, requestTwentySix]).then(axios.spread((...response) => {
-                console.log('cazzo ce',response);
                 store.dispatch({ type: SET_ALL_COCKTAILS, payload: response });
                 // use/access the results
             })).catch(errors => {
@@ -105,12 +98,12 @@ const checkCocktailApp = (store) => (next) => (action) => {
             break;
         case GET_ALL_INGREDIENT:
             next(action);
-            const clickIngredient = get(action, 'payload.inputData');
-            console.log('Dio merdissima', clickIngredient)
-            axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${clickIngredient}`)
+            const clickIngredient = get(action, 'payload.e', '');
+            console.log('Dio merdissima', get(action, 'payload.e', ''))
+            axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${clickIngredient}`)
                 .then((response) => {
                     console.log('response madonna', response);
-                    store.dispatch({ type: SET_ALL_INGREDIENT, payload: get(response, 'data.drinks[0]', []) });
+                    store.dispatch({ type: SET_ALL_INGREDIENT, payload: get(response, 'data.drinks', []) });
                 });
             break;
         default:

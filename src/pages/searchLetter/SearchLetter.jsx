@@ -14,8 +14,9 @@ const SearchLetter = (props) => {
         letterCocktail
     } = props
 
-    const [clickValues, setClickValues] = useState('');
+    const [clickValues, setClickValues] = React.useState('');
     const [open, setOpen] = React.useState(false);
+    const [linkActive, setLinkActive] = React.useState(false);
 
 
     const handleOpen = (e) => {
@@ -32,6 +33,11 @@ const SearchLetter = (props) => {
             e,
         };
         handleGetLetterCocktail(data);
+        if(linkActive === false){
+            setLinkActive(true);
+        }else{
+            setLinkActive(false);
+        }
     }
 
     useEffect(() => {
@@ -47,8 +53,8 @@ const SearchLetter = (props) => {
                 <div className={'sidebar'}>
                     <h3>Browse Drinks</h3>
                     <ul className={"search-letter"}>
-                        <li><a onClick={(e) => clickValue("A")}>A</a></li>
-                        <li><a onClick={(e) => clickValue("B")}>B</a></li>
+                        <li className={linkActive ? 'active' : ''}><a onClick={(e) => clickValue("A")}>A</a></li>
+                        <li className={linkActive ? 'active' : ''}><a onClick={(e) => clickValue("B")}>B</a></li>
                         <li><a onClick={(e) => clickValue("C")}>C</a></li>
                         <li><a onClick={(e) => clickValue("D")}>D</a></li>
                         <li><a onClick={(e) => clickValue("E")}>E</a></li>
