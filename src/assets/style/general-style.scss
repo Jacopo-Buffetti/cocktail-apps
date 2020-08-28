@@ -9,6 +9,11 @@ body{
 }
 .main-page{
   margin: 0 20px;
+  .full-width-mobile{
+    @media(max-width: 500px) {
+      margin: 0 -20px;
+    }
+  }
 }
 
 .full-page{
@@ -71,6 +76,7 @@ h1, h2, h3, h4, h5, h6, p, li, span, a {
   }
   @media(max-width: 500px){
     justify-content: center;
+    padding: 20px;
   }
 }
 .title-pages{

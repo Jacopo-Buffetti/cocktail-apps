@@ -96,10 +96,10 @@ const SearchLetter = (props) => {
     return (
         <div className={`main-letter main-page`}>
             <div className={`full-page`}>
-                <img src={require('../../assets/image/letters-search.png')} />
+                <div className={"back-letter"}></div>
             </div>
-            <h1 className={"title-pages"}>Search your coctkail by Ingredient</h1>
-            <div className={classes.root}>
+            <h1 className={"title-pages"}>Search your coctkail by Letter</h1>
+            <div className={`classes.root full-width-mobile`}>
                 <AppBar position="static" color="default">
                     <Tabs
                         value={value}

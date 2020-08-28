@@ -138,8 +138,8 @@ const SearchIngredient = (props) => {
             <div className={`full-page`}>
                 <div className={"back-ingredients"}></div>
             </div>
-            <h1 className={"title-pages"}>Search your coctkail by letter</h1>
-            <div className={classes.root}>
+            <h1 className={"title-pages"}>Search your coctkail by Ingredient</h1>
+            <div className={`classes.root full-width-mobile`}>
                 <AppBar position="static" color="default">
                     <Tabs
                         value={value}
