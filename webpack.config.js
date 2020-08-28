@@ -16,6 +16,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const CopyPlugin = require('copy-webpack-plugin');
 const CSSNano = require('cssnano');
 const webpack = require('webpack');
+const subFolder = 'cocktails/';
 
 module.exports = [{
     mode: 'development',
@@ -30,8 +31,8 @@ module.exports = [{
     output: {
         publicPath: ASSET_PATH,
         path: BUILD_DIR,
-        filename: 'js/[name].bundle.js',
-        chunkFilename: 'js/[name].[hash].js',
+        filename: `${subFolder}/js/[name].bundle.js`,
+        chunkFilename: `${subFolder}/js/[name].[hash].js`,
         hotUpdateChunkFilename: 'hot/hot-update.[hash].js',
         hotUpdateMainFilename: 'hot/hot-update.[hash].json',
         globalObject: 'this'
@@ -125,7 +126,7 @@ module.exports = [{
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'images/',
+                            outputPath: `${subFolder}/images/`,
                         },
                     },
                 ],
@@ -136,7 +137,7 @@ module.exports = [{
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'fonts/',
+                        outputPath: `${subFolder}/fonts/`,
 
                     },
                 }],
@@ -147,7 +148,7 @@ module.exports = [{
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'images/',
+                        outputPath: `${subFolder}/images/`,
                     },
                 }],
             },
@@ -159,7 +160,7 @@ module.exports = [{
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'json/[name].[ext]',
+                            name: `${subFolder}/json/[name].[ext]`,
                         },
                     },
                 ],
@@ -170,8 +171,8 @@ module.exports = [{
         new MiniCssExtractPlugin({
 // Options similar to the same options in webpackOptions.output
 // both options are optional
-            filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
-            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
+            filename: devMode ? `${subFolder}/css/[name].css` : `${subFolder}/css/[name].[hash].css`,
+            chunkFilename: devMode ? `${subFolder}/css/[id].css` : `${subFolder}/css/[id].[hash].css`,
         }),
         new CleanWebpackPlugin({
             dry: false,
@@ -181,14 +182,14 @@ module.exports = [{
         }),
         new CopyPlugin({
             patterns: [
-                { from: './public/favicon.ico', to: './' }
+                { from: './public/favicon.ico', to: `./${subFolder}/` }
             ]},
         ),
 // new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             chunksSortMode: 'none',
             hash: true,
-            filename: './index.html',
+            filename: `./${subFolder}/index.html`,
             template: './public/index.html',
             minify: {
                 collapseWhitespace: true,
@@ -208,7 +209,6 @@ module.exports = [{
             'process.env.BROWSER': JSON.stringify(true),
             'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
         }),
-        new WebpackAssetsManifest()
     ],
     resolve: {
         extensions: ['.js', '.jsx'],
