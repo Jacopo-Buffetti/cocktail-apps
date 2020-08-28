@@ -64,6 +64,7 @@ const SearchIngredient = (props) => {
         handleGetAllCocktail,
         handleGetAllingredient,
         allCocktail,
+        allIngredient,
     } = props
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -71,6 +72,7 @@ const SearchIngredient = (props) => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        allIngredient.splice(0,allIngredient.length);
     };
 
     useEffect(() => {
@@ -104,7 +106,6 @@ const SearchIngredient = (props) => {
             obj[indexArray.charAt(0)].push([indexArray]);
           }
         })
-        console.log(obj);
         setObjIngredients(obj);
     }, [allCocktail, handleGetAllingredient]);
 
@@ -113,6 +114,10 @@ const SearchIngredient = (props) => {
             e,
         };
         handleGetAllingredient(data);
+    }
+
+    const modalClick = (e) => {
+        console.log('click modale',e);
     }
 
     return (
@@ -148,7 +153,25 @@ const SearchIngredient = (props) => {
                               }
                           </ul>
                       </TabPanel>
+
                   ))
+                }
+            </div>
+            <div className={`gallery-letter-flex`}>
+                {
+                    (allIngredient) ?(
+                        allIngredient.map((item, i) => {
+                            return <div className="card" key={i.toString()} onClick={(e) => modalClick(item.strDrink)}>
+                                <img src={item.strDrinkThumb} alt="Avatar"/>
+                                <div>
+                                    <h4><b>{item.strDrink}</b></h4>
+                                </div>
+
+                            </div>
+                        })
+                    ):(
+                        <div></div>
+                    )
                 }
             </div>
         </div>

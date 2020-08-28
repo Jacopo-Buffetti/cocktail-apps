@@ -9,8 +9,6 @@ const DialogLetter = (props) => {
         clickValues
     } = props;
 
-    console.log('porco dio sono piu furbo io',clickValues)
-
     const [modalStyle] = React.useState(getModalStyle);
     const useStyles = makeStyles(theme => ({
         modal: {

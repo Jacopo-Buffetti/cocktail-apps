@@ -99,10 +99,8 @@ const checkCocktailApp = (store) => (next) => (action) => {
         case GET_ALL_INGREDIENT:
             next(action);
             const clickIngredient = get(action, 'payload.e', '');
-            console.log('Dio merdissima', get(action, 'payload.e', ''))
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${clickIngredient}`)
                 .then((response) => {
-                    console.log('response madonna', response);
                     store.dispatch({ type: SET_ALL_INGREDIENT, payload: get(response, 'data.drinks', []) });
                 });
             break;

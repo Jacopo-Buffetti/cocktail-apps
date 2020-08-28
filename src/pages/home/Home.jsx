@@ -51,8 +51,6 @@ const Home = (props) => {
         handleSearchCocktail();
     }, []);
 
-    console.log('dio bestia',searchCoctail.strAlcoholic)
-
     return (
         <div className={`main-home main-page`}>
             <Slider className={'slider-home'} dots>
