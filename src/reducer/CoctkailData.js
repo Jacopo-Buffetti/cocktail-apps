@@ -1,12 +1,20 @@
 import { handleActions } from 'redux-actions';
-import { SET_RANDOM_COCKTAILS, SET_SEARCH_COCKTAILS, SET_LETTER_COCKTAILS, SET_ALL_COCKTAILS, SET_ALL_INGREDIENT } from '../actions/types/CocktailDataType';
+import {
+    SET_RANDOM_COCKTAILS,
+    SET_SEARCH_COCKTAILS,
+    SET_LETTER_COCKTAILS,
+    SET_ALL_COCKTAILS,
+    SET_ALL_INGREDIENT,
+    SET_MODAL_INGREDIENT,
+} from '../actions/types/CocktailDataType';
 
 export const defaultState = {
     data: [],
     list: [],
     datas: [],
     allData: [],
-    allIngredient: []
+    allIngredient: [],
+    modalIngredient: []
 };
 
 export default handleActions(
@@ -30,6 +38,10 @@ export default handleActions(
       [SET_ALL_INGREDIENT]: (state, action) => ({
           ...state,
           allIngredient: action.payload,
+      }),
+      [SET_MODAL_INGREDIENT]: (state, action) => ({
+          ...state,
+          modalIngredient: action.payload,
       }),
   },
   defaultState,

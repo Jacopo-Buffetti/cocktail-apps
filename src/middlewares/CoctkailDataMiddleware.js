@@ -5,7 +5,8 @@ import {
     GET_SEARCH_COCKTAILS, SET_SEARCH_COCKTAILS,
     GET_LETTER_COCKTAILS, SET_LETTER_COCKTAILS,
     GET_ALL_COCKTAILS, SET_ALL_COCKTAILS,
-    SET_ALL_INGREDIENT, GET_ALL_INGREDIENT
+    SET_ALL_INGREDIENT, GET_ALL_INGREDIENT,
+    SET_MODAL_INGREDIENT, GET_MODAL_INGREDIENT,
 } from '../actions/types/CocktailDataType';
 
 const checkCocktailApp = (store) => (next) => (action) => {
@@ -102,6 +103,16 @@ const checkCocktailApp = (store) => (next) => (action) => {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${clickIngredient}`)
                 .then((response) => {
                     store.dispatch({ type: SET_ALL_INGREDIENT, payload: get(response, 'data.drinks', []) });
+                });
+            break;
+        case GET_MODAL_INGREDIENT:
+            next(action);
+            console.log('ce riprovamo', action.payload)
+            const modalClick = get(action, 'payload.e', null);
+            axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${modalClick}`)
+                .then((response) => {
+                    console.log('cazzo ne so',response)
+                    store.dispatch({ type: SET_MODAL_INGREDIENT, payload: get(response, 'data.drinks[0]', []) });
                 });
             break;
         default:

@@ -9,7 +9,9 @@ import {
     GET_ALL_COCKTAILS,
     SET_ALL_COCKTAILS,
     SET_ALL_INGREDIENT,
-    GET_ALL_INGREDIENT
+    GET_ALL_INGREDIENT,
+    SET_MODAL_INGREDIENT,
+    GET_MODAL_INGREDIENT,
 } from './types/CocktailDataType';
 
 export const {
@@ -22,7 +24,9 @@ export const {
     getAllCocktails,
     setAllrCocktails,
     getAllIngredient,
-    setAllIngredient
+    setAllIngredient,
+    setModalIngredient,
+    getModalIngredient
 } = createActions({
     [SET_RANDOM_COCKTAILS]: (payload) => payload,
     [GET_RANDOM_COCKTAILS]: (payload) => payload,
@@ -34,4 +38,6 @@ export const {
     [GET_ALL_COCKTAILS]: (payload) => payload,
     [SET_ALL_INGREDIENT]: (payload) => payload,
     [GET_ALL_INGREDIENT]: (payload) => payload,
+    [SET_MODAL_INGREDIENT]: (payload) => payload,
+    [GET_MODAL_INGREDIENT]: (payload) => payload,
 });

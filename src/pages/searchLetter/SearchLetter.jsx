@@ -62,13 +62,13 @@ const SearchLetter = (props) => {
         letterCocktail
     } = props
 
+    const alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
     const [clickValues, setClickValues] = React.useState('');
     const [open, setOpen] = React.useState(false);
     const [linkActive, setLinkActive] = React.useState(false);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    const alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

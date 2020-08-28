@@ -6,6 +6,7 @@ import get from "lodash/get";
 import set from "lodash/set";
 import { getAllCocktails } from "../../actions/CocktailDataAction";
 import { getAllIngredient } from "../../actions/CocktailDataAction";
+import { getModalIngredient } from "../../actions/CocktailDataAction";
 import {connect} from "react-redux";
 //TABS
 import PropTypes from 'prop-types';
@@ -15,6 +16,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Modal from '@material-ui/core/Modal';
+import DialogIngredient from "../../components/DialogIngredient/DialogIngredient";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -63,12 +66,18 @@ const SearchIngredient = (props) => {
     const {
         handleGetAllCocktail,
         handleGetAllingredient,
+        handleGetModalingredient,
         allCocktail,
         allIngredient,
     } = props
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const [objIngredients, setObjIngredients] = useState({});
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -117,7 +126,11 @@ const SearchIngredient = (props) => {
     }
 
     const modalClick = (e) => {
-        console.log('click modale',e);
+        const data = {
+            e
+        };
+        handleGetModalingredient(data);
+        setOpen(true);
     }
 
     return (
@@ -161,7 +174,7 @@ const SearchIngredient = (props) => {
                 {
                     (allIngredient) ?(
                         allIngredient.map((item, i) => {
-                            return <div className="card" key={i.toString()} onClick={(e) => modalClick(item.strDrink)}>
+                            return <div className="card" key={i.toString()} onClick={(e) => modalClick(item.strDrink, item)}>
                                 <img src={item.strDrinkThumb} alt="Avatar"/>
                                 <div>
                                     <h4><b>{item.strDrink}</b></h4>
@@ -174,17 +187,26 @@ const SearchIngredient = (props) => {
                     )
                 }
             </div>
+            <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={open}
+                onClose={handleClose}
+            >
+                <DialogIngredient></DialogIngredient>
+            </Modal>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
     allCocktail: get(state, 'CoctkailData.allData', []),
-    allIngredient: get(state, 'CoctkailData.allIngredient', [])
+    allIngredient: get(state, 'CoctkailData.allIngredient', []),
 });
 
 const mapDispatchToProps = (dispatch) => ({
     handleGetAllingredient: bindActionCreators(getAllIngredient, dispatch),
+    handleGetModalingredient: bindActionCreators(getModalIngredient, dispatch),
     handleGetAllCocktail: bindActionCreators(getAllCocktails, dispatch),
 
 });
