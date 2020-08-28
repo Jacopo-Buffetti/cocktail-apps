@@ -98,6 +98,7 @@ const SearchLetter = (props) => {
             <div className={`full-page`}>
                 <img src={require('../../assets/image/letters-search.png')} />
             </div>
+            <h1 className={"title-pages"}>Search your coctkail by Ingredient</h1>
             <div className={classes.root}>
                 <AppBar position="static" color="default">
                     <Tabs

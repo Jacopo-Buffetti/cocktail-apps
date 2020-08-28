@@ -61,7 +61,7 @@ const Home = (props) => {
                 <div className={'container-three'}>
                 </div>
             </Slider>
-            <div>
+            <div className={"first-block"}>
                 <h3>The Random Cocktail</h3>
                 <div className="card" onClick={handleOpen}>
                     <img src={randomCoctail.strDrinkThumb} alt="Avatar" />
