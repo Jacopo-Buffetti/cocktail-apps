@@ -39,6 +39,9 @@ const  Header = () => {
                     <Link to={"/search-all"}>Search Coctkail for Ingredient</Link>
                 </MenuItem>
                 <MenuItem>
+                    <Link to={"/love-match"}>Love Match</Link>
+                </MenuItem>
+                <MenuItem>
                     <Link to={"/contact"}>Contact</Link>
                 </MenuItem>
             </Menu>

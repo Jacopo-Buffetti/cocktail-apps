@@ -107,11 +107,9 @@ const checkCocktailApp = (store) => (next) => (action) => {
             break;
         case GET_MODAL_INGREDIENT:
             next(action);
-            console.log('ce riprovamo', action.payload)
             const modalClick = get(action, 'payload.e', null);
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${modalClick}`)
                 .then((response) => {
-                    console.log('cazzo ne so',response)
                     store.dispatch({ type: SET_MODAL_INGREDIENT, payload: get(response, 'data.drinks[0]', []) });
                 });
             break;

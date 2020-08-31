@@ -32,7 +32,6 @@ const DialogIngredient = (props) => {
     useEffect(() => {
         const ingredients = [];
         const measures = [];
-        console.log('speriamo ci siano i dati', modalIngredient)
         for (let i= 1; i < 16; ++i){
             if(eval('modalIngredient.strIngredient' + i) !== null){
                 ingredients.push(eval('modalIngredient.strIngredient' + i));

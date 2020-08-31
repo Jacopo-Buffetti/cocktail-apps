@@ -7,6 +7,7 @@ const Home = React.lazy(() => import('./pages/home/Home'));
 const SearchLetter = React.lazy(() => import('./pages/searchLetter/SearchLetter'));
 const SearchIngredient = React.lazy(() => import('./pages/searchIngredient/SearchIngredient'));
 const Contact = React.lazy(() => import('./pages/contact/Contact'));
+const LoveMatch = React.lazy(() => import('./pages/loveMatch/LoveMatch'));
 
 function App() {
     return (
@@ -33,6 +34,11 @@ function App() {
                     exact
                     component={SearchIngredient}
           />
+            <Route
+                path="/love-match"
+                exact
+                component={LoveMatch}
+            />
         </Switch>
           <Footer />
       </Suspense>
