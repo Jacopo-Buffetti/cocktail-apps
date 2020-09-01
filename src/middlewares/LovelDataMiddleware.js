@@ -7,8 +7,8 @@ const checkLoveApp = (store) => (next) => (action) => {
     switch (action.type) {
         case GET_DATA_LOVE:
             next(action);
-            const firstName = get(action, 'payload', '');
-            const secondName = get(action, 'payload', '');
+            const firstName = get(action, 'payload.inputFirstLoveData', '');
+            const secondName = get(action, 'payload.inputSecondLoveData', '');
             axios.get(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${firstName}&sname=${secondName}`, {
                 headers: {
                     "x-rapidapi-host": "love-calculator.p.rapidapi.com",

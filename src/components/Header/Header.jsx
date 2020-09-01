@@ -41,9 +41,9 @@ const  Header = () => {
                 <MenuItem>
                     <Link to={"/love-match"}>Love Match</Link>
                 </MenuItem>
-                <MenuItem>
-                    <Link to={"/contact"}>Contact</Link>
-                </MenuItem>
+                {/*<MenuItem>*/}
+                {/*    <Link to={"/contact"}>Contact</Link>*/}
+                {/*</MenuItem>*/}
             </Menu>
         </div>
     );
